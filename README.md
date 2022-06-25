@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# study React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## day1 -coding apple react
 
-## Available Scripts
+### 🎈 JSX문법에서는 class 넣을때는 className을 사용해야한다.
 
-In the project directory, you can run:
+class는 JSX문법에서 다른곳에서 활용되기떄문에 className라고 사용한다.
 
-### `npm start`
+### 🎈JSX문법에서는 변수넣을땐 {중괄호 사용};
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+let post = "대구 국밥 맛집" <=변수 생성
+<p>{post}<p> <=중괄호를 사용하여 변수를 담아올수있다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🎈JSX문법에서는 style 넣을땐 style={{스타일명:'값'}};
 
-### `npm test`
+스타일안에는 오브젝트형으로 자료를 넣어줘야한다.
+-는 자바스크립트에서 정말 마이너스로 인식하기때문에 font-size (X) => fontSize (O) 이렇게 작성하여 사용하여야 한다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🎈 state
 
-### `npm run build`
+자료를 임시로 저장하여 사용할때는 변수를사용하여 사용한다. 중요한 자료를 저장할때는 state를 활용하는것이다 좋다.(임시로 사용할때도 사용가능하다)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+기본 문법은
+1. useState('담을 내용'); <= 입력을해주면
+2. import { useState } from 'react'; <=App.js파일 상단에 옆의 코드가 자동생성될것이다 만약에 생성되지 않았다면 작성해주면 된다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. 선언후 활용하기
+let [글제목,b] = useState('남자셔츠 추천');
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- <div className="list">
+        <h4>{글제목}</h4>
+        <p>6월 25일 발행</p>
+      </div> -->
 
-### `npm run eject`
+h4 안에 글제목이 남자셔츠 추천으로 변경된다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 🎄 변수문법과 state 문법의 차이점
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+일반변수는 갑자기 변경이되면 html에 자동으로 반영이 되지 않는다.
+let post = '여름 신상' => '겨울 신상' 이렇게 값이 변경되었을때 정보가 자동으로 html 반영되지 않는다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+But!!✨state✨ 의경우는 자동으로 재 렌더링이 된다. 여름신상을 겨울신상으로 바뀌었을때 자동으로 바뀌게 된다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### 🎈 WARRING 메시지 끄는법
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+/* eslint-disable */
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### 🎈 좋아요 싫어요 기능 넣기
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### 🎄 onClick 함수를 활용해야한다.
+기본 형태
+function 함수(){
+  console.log(1)
+};
 
-### Analyzing the Bundle Size
+1. onClick = {함수}
+2. onClick = {function(){console.log(1)}}
+3. onClick ={ ()=>{} }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### 🎄 state함수를 활용선언하여 좋아요 싫어요 함수를 만들어준다. 좋아요, 좋아요변경 / 싫어요,싫어요변경
 
-### Making a Progressive Web App
+let [좋아요,좋아요변경] = useState(0);
+let [싫어요,싫어요변경] = useState(0);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<span onClick={ ()=>{좋아요변경(좋아요+1)} }>💛</span>{좋아요}<span onClick={()=>{싫어요변경(싫어요+1)}}>💢</span>{싫어요}
 
-### Advanced Configuration
+좋아요변경함수가 실행이되면 (좋아요+1)이 실행되어 좋아여가 올라가고
+싫어요변경함수가 실행되면 (싫어요+1)이 실행되어 싫어요가 올라간다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 🎄state 변경할때에는 sate변경함수를 사용해야한다 [a,b] a = state함수 b = state변경 함수
+ a=3 (X) b(1) (O)
