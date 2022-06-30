@@ -25,12 +25,13 @@ sort 글정렬해주기
 
 
 ## 🎈 많은 div를 줄이는 방법
-  <!-- <div className="modal">
+```
+ <div className="modal">
       <h4>제목</h4>
       <p>날짜</p>
       <p>상세내용</p>
-  </div> -->
-
+  </div>
+```
 function을 활용하여 함수로 코드를 작성할수있다. 
 
 #### 기본모델
@@ -46,16 +47,17 @@ function 원하는함수명(){
     </>  의미없는 div대신 <></>도 사용가능
   )
 }
-
+```
 function Modal(){
   return(
-  <!-- <div className="modal">
+<div className="modal">
       <h4>제목</h4>
       <p>날짜</p>
       <p>상세내용</p>
-  </div> -->
+  </div>
   )
 }
+```
 #### 변형 모델
 const Modal = () =>{
   return(
@@ -99,11 +101,12 @@ let [modal, setModal] = useState(0);
 {modal == 1 ? </Modal> : null}
 0일때는 닫혀있고 1일때는 모달창이 보이게끔 해준다.
 
-  <!-- <button onClick={ ()=>{ setModal(1) } }> {글제목[0]} </button>
+```
+<button onClick={ ()=>{ setModal(1) } }> {글제목[0]} </button>
   { 
       modal == true ? <Modal></Modal> : null
-  } -->
-
+  } 
+```
   버튼을 클릭하면 모달창1로변경해주여 모달창이 표시될수있도록 해주었다.
 
 클릭시 자동으로 켜졌다 꺼졌다 하는법
@@ -142,7 +145,8 @@ let [modal, setModal] = useState(0);
 
 ### 🎈 중괄호{} 안에서는 for 반복문을 사용할수없기때문에 map함수를 사용한다.
 
-  <!-- function App (){
+```
+ function App (){
   return (
     <div>
       { 
@@ -152,13 +156,15 @@ let [modal, setModal] = useState(0);
       }
     </div>
   )
-} -->
+}
+```
 이렇게 사용하면 array 1,2,3에 div 안녕이 총 3개가 생성되게 된다.
 
 #### 🎄 글을 자동적으로 생성하여 보여주고싶을때 🎄
 let[글제목,글제목변경] = useState(['남자 셔츠 추천', '여름 신상 추천', '콩국수 추천맛집']);
 
-  <!-- { 
+  ```
+  { 
     글제목.map(function(a){  // <= 글제목 또한 array이기 때문에 글제목.map()함수를사용해준다. 함수기능 2,3를 참고하여 function값에 a를 넣어주어 자동적으로 인덱스번호를 순차적으로 넣어주오 글제목을 변경해주게 할수있다.
       return (
       <div className="list">
@@ -166,7 +172,8 @@ let[글제목,글제목변경] = useState(['남자 셔츠 추천', '여름 신�
         <p>2월 18일 발행</p>
       </div> )
     }) 
-  } -->
+  } 
+  ```
 
 #### 🎄 파라미터 안에는 2개까지 작명이 가능하여 function(a,i) 🎄
   글제목[i]를 사용하여도 결과값은 같게나온다
@@ -189,16 +196,18 @@ let [싫어요,싫어요변경] = useState([0, 0, 0]);
 좋아요 싫어요 또한 array를 자료형으로 만들어주어 각자 0을 부여해준다.
 
 #### 기존 코드 
-<!-- 
+
+```
 <span onClick={ ()=>
 {좋아요변경(좋아요+1)} }>
 💛</span>{좋아요}
 <span onClick={()=>
 {싫어요변경(싫어요+1)}}>
 💢</span>{싫어요} 
--->
+```
 #### 변경 코드
-<!-- 
+
+```
 <span onClick={ ()=>{
   let copy = [...좋아요]; <= 1번 ✨
   copy[i] = copy[i] + 1; <= 2번 ✨
@@ -207,8 +216,7 @@ let [싫어요,싫어요변경] = useState([0, 0, 0]);
   let copy = [...싫어요];
   copy[i] = copy[i] + 1;
   싫어요변경(copy)}}>💢</span>{싫어요[i]} 
-  -->
-
+```
   1. array자료형이기 때문에 원본 데이터가 변경되지 않게 하기위해서 먼저 copy를 해준다.
   2. copy값에 파라미터 i를 이용하여 인덱스 각 게시물의 인덱스 번호에 맞는 값을 찾아준뒤 copy[i]값에  +1 해준다. 좋아요,싫어요를 눌렀을때 값이 카운터 될수있게 해준다.
   3. 변경된 state값을 저장해주기 위해 좋아요변경(copy) 싫어요변경(copy) 값을 활용해준다.
@@ -249,8 +257,8 @@ props를 활용하여 전송을 해야 한다.
 
 
 ### 모달창 스탕일링하기
-
-<!-- function Modal(props){
+```
+function Modal(props){
   return(
     <div className="modal" style={{background : 'skyblue'}}> // 이렇게 스타일을 줄수있지만 props. 를활용하여 더 편하게 색을 변경가능
       <h4>{props.글제목[0]}</h4>
@@ -258,8 +266,8 @@ props를 활용하여 전송을 해야 한다.
       <p>상세내용</p>
   </div>
   )
-} -->
-
+}
+```
 {
   modal == 1 ? <Modal color ={'red'} 글제목 = {글제목}/> : null
 }
